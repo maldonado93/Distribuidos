@@ -1,11 +1,9 @@
 package view;
 
-
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-
 import logic.Imp_Material;
 import logic.Imp_Practica;
 import logic.Imp_Robot;
@@ -15,12 +13,9 @@ import logic.Imp_Usar;
 
 
 
-
-
 public class ObjectServer {
 
 	public static void main(String[] args) throws RemoteException, MalformedURLException{
-		
 		// TODO Auto-generated method stub
 		
 		Imp_Usar ImpUsar = new Imp_Usar();
@@ -41,11 +36,6 @@ public class ObjectServer {
 		r.rebind("Material",ImpMaterial);
 		System.out.println("Objeto Material Publicado");
 		
-		
-		
-		
-		
-		    
 		    
 	}
 

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import interfaces.IPractica;
+import interfaces.IRobot;
 import interfaces.IUsar;
 import persistence.NotFoundException;
 import persistence.Practica;
@@ -17,7 +18,9 @@ import persistence.RobotDao;
 import persistence.Usar;
 import persistence.UsarDao;
 
-public abstract class Imp_Usar extends UnicastRemoteObject implements IUsar {
+
+
+public abstract class Imp_Usar  extends UnicastRemoteObject implements IUsar {
 	
 
 
@@ -30,6 +33,7 @@ public Imp_Usar() throws RemoteException {
 	super();
 	// TODO Auto-generated constructor stub
 }
+
 
 public Usar searchUsar(int codigo_practica) throws RemoteException {
 	//crear el value object a retornar
