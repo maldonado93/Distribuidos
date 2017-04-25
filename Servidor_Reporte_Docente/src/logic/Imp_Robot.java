@@ -7,33 +7,38 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-import interfaces.IMaterial;
-import persistence.Material;
-import persistence.MaterialDao;
+import interfaces.IRobot;
 import persistence.NotFoundException;
+import persistence.Robot;
+import persistence.RobotDao;
 
-
-
-public abstract class Imp_Material extends UnicastRemoteObject  implements IMaterial {
+public class Imp_Robot extends UnicastRemoteObject implements IRobot {
 	
+
+
 /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-public Imp_Material() throws RemoteException {
+public Imp_Robot() throws RemoteException {
 	super();
 	// TODO Auto-generated constructor stub
 }
 
-public Material searchMaterial(int codigo_material) throws RemoteException {
+public Robot searchRobot(int serie) throws RemoteException {
 	//crear el value object a retornar
-	Material u=new Material(codigo_material);	
+	Robot u=new Robot(serie);	
 	//crear los DAO a manipular
-	MaterialDao Material= new MaterialDao();
-	
+	RobotDao Robot= new RobotDao();
+	 /* private int serie;
+	    private String base;
+	    private String hombro;
+	    private String codo;
+	    private String muneca;
+	    private String pinza;*/
     try{
-    	Material.load(getConnection(),u);
+    	Robot.load(getConnection(),u);
     }
     catch(SQLException e){
     	u=null;
@@ -45,13 +50,13 @@ public Material searchMaterial(int codigo_material) throws RemoteException {
     return u;
 }
 
-public List searchMaterials() throws RemoteException {
+public List searchRobots() throws RemoteException {
 	List l=null;	
 	//crear los DAO a manipular
-	MaterialDao Material= new MaterialDao();
+	RobotDao Robot= new RobotDao();
         
     try{
-    	l=Material.loadAll(getConnection());
+    	l=Robot.loadAll(getConnection());
     	
     }
     catch(SQLException e){
@@ -60,17 +65,17 @@ public List searchMaterials() throws RemoteException {
     return l;
 }
 
-public boolean updateMaterial(int codigo_material, String descripcion, String tipo)
+public boolean updateRobot(int serie, String base, String hombro, String codo,String muneca, String pinza)
 		throws RemoteException {
 	boolean update=true;
 	//crear el value object a actualizar
-	Material u=new Material();
-	u.setAll(codigo_material,descripcion,tipo);
+	Robot u=new Robot();
+	u.setAll( serie,  base,  hombro,  codo, muneca,  pinza);
 	//crear los DAO a manipular
-	MaterialDao Material= new MaterialDao();
+	RobotDao Robot= new RobotDao();
         
     try{
-    	Material.save(getConnection(),u);
+    	Robot.save(getConnection(),u);
     }
     catch(SQLException e){
     	update=false;
@@ -84,15 +89,15 @@ public boolean updateMaterial(int codigo_material, String descripcion, String ti
     return update;
 }
 
-public boolean delMaterial(int codigo_material) throws RemoteException {
+public boolean delRobot(int serie) throws RemoteException {
 	boolean del=true;
 	//crear el value object a eliminar
-	Material u=new Material(codigo_material);
+	Robot u=new Robot(serie);
 	//crear los DAO a manipular
-	MaterialDao Material= new MaterialDao();
+	RobotDao Robot= new RobotDao();
         
     try{
-    	Material.delete(getConnection(),u);
+    	Robot.delete(getConnection(),u);
     }
     catch(SQLException e){
     	del=false;
@@ -105,20 +110,24 @@ public boolean delMaterial(int codigo_material) throws RemoteException {
     return del;
 }
 
-public boolean addMaterial(int codigo_material, String descripcion, String tipo)
+public boolean addRobot(int serie, String base, String hombro, String codo,String muneca, String pinza)
 		throws RemoteException {
 	boolean add = true;
 
 	// crear el value object de user
-	Material u = new Material(codigo_material);
-	u.setDescripcion(descripcion);
-	u.setTipo(tipo);
+	Robot u = new Robot(serie);
+	u.setBase(base);
+	u.setCodo(codo);
+	u.setHombro(hombro);
+	u.setMuneca(muneca);
+	u.setPinza(pinza);
+
 
 	// crear el DAO a manipular
-	MaterialDao Material = new MaterialDao();
+	RobotDao Robot = new RobotDao();
 	
 	try {
-		Material.create(getConnection(),u);
+		Robot.create(getConnection(),u);
 	} catch (SQLException e) {
 		add = false;
 		e.printStackTrace();
@@ -143,7 +152,5 @@ private Connection getConnection(){
     return conn;
 
 }
-
-
 
 }
