@@ -1,5 +1,6 @@
 package view;
 
+
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -14,53 +15,36 @@ import logic.Imp_Usar;
 
 
 
+
+
 public class ObjectServer {
 
 	public static void main(String[] args) throws RemoteException, MalformedURLException{
+		
 		// TODO Auto-generated method stub
 		
-		Imp_Usar impl3 = new Imp_Usar() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			
-		};
-			Registry r3 = LocateRegistry.createRegistry(10000);
-			r3.rebind("Usuario",impl3);
-			    System.out.println("Objeto Publicado");
+		Imp_Usar ImpUsar = new Imp_Usar();
+		Imp_Practica ImpPractica = new Imp_Practica();
+		Imp_Robot ImpRobot = new Imp_Robot();
+		Imp_Material ImpMaterial = new Imp_Material();
 		
-		
-		
-		Imp_Practica impl2 = new Imp_Practica() {
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-		};
-		Registry r2 = LocateRegistry.createRegistry(10000);
-		r2.rebind("Usuario",impl2);
-		    System.out.println("Objeto Publicado");
-		
-		Imp_Robot impl1 = new Imp_Robot();
-		Registry r1 = LocateRegistry.createRegistry(10000);
-		r1.rebind("Usuario",impl1);
-		    System.out.println("Objeto Publicado");
-		
-		
-		Imp_Material impl = new Imp_Material(){
-
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			
-		};
 		Registry r = LocateRegistry.createRegistry(10000);
-		r.rebind("Usuario",impl);
-		    System.out.println("Objeto Publicado");
+		r.rebind("Usar",ImpUsar);
+		System.out.println("Objeto Usar Publicado");
+		
+		r.rebind("Practica",ImpPractica);
+		System.out.println("Objeto PracticaPublicado");
+		
+		r.rebind("Robot",ImpRobot);	
+		System.out.println("Objeto Robot Publicado");
+		
+		r.rebind("Material",ImpMaterial);
+		System.out.println("Objeto Material Publicado");
+		
+		
+		
+		
+		
 		    
 		    
 	}
