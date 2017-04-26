@@ -17,7 +17,7 @@ import persistence.RobotDao;
 import persistence.Usar;
 import persistence.UsarDao;
 
-public abstract class Imp_Usar extends UnicastRemoteObject implements IUsar {
+public class Imp_Usar extends UnicastRemoteObject implements IUsar {
 	
 
 

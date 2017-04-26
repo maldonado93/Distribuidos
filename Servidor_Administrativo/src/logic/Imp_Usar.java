@@ -7,20 +7,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-import interfaces.IPractica;
-import interfaces.IRobot;
+
 import interfaces.IUsar;
 import persistence.NotFoundException;
-import persistence.Practica;
-import persistence.PracticaDao;
-import persistence.Robot;
-import persistence.RobotDao;
 import persistence.Usar;
 import persistence.UsarDao;
 
 
 
-public abstract class Imp_Usar  extends UnicastRemoteObject implements IUsar {
+public class Imp_Usar  extends UnicastRemoteObject implements IUsar {
 	
 
 

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Cliente_Administrativo</name>
+	<name>Cliente_Administrativo2</name>
 	<comment></comment>
 	<projects>
+		<project>Servidor_Administrativo</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

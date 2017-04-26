@@ -14,7 +14,7 @@ import persistence.PracticaDao;
 
 
 
-public abstract class Imp_Practica extends UnicastRemoteObject implements IPractica {
+public class Imp_Practica extends UnicastRemoteObject implements IPractica {
 	
 
 

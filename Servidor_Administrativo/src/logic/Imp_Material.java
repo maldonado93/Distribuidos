@@ -14,7 +14,7 @@ import persistence.NotFoundException;
 
 
 
-public abstract class Imp_Material extends UnicastRemoteObject  implements IMaterial {
+public  class Imp_Material extends UnicastRemoteObject  implements IMaterial {
 	
 /**
 	 * 
